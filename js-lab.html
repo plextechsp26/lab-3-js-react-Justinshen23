@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Lab</title>
+    <style>
+        body {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .output {
+            font-family: monospace;
+            background: #f0f0f0;
+            padding: 8px;
+            margin-top: 8px;
+            min-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>JavaScript Lab</h1>
+    <p>Complete each exercise below. Open your browser's console (<strong>F12 → Console</strong>) to see
+        <code>console.log</code> output.
+    </p>
+
+    <!-- ============================================================ -->
+    <h2>Exercise 1: Variables & Data Types</h2>
+    <div class="exercise">
+        <div class="instructions">
+            <strong>Your task:</strong>
+            <ol>
+                <li>Declare a <code>const</code> called <code>myName</code> with your name.</li>
+                <li>Declare a <code>let</code> called <code>myAge</code> with your age as a number.</li>
+                <li>Log both variables to the console using a template literal:<br>
+                    <code>`My name is ${myName} and I am ${myAge} years old.`</code>
+                </li>
+                <li>Try reassigning <code>myName</code>. What happens? Add a comment explaining why.</li>
+            </ol>
+        </div>
+        <script>
+            // YOUR CODE HERE — Exercise 1
+
+        </script>
+        <button onclick="checkEx1()">Check Exercise 1</button>
+        <div class="output" id="ex1-output">Output will appear here...</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Exercise 2: Functions</h2>
+    <div class="exercise">
+        <div class="instructions">
+            <strong>Your task:</strong>
+            <ol>
+                <li>Write a function <code>reverseString(str)</code> that returns the string reversed.</li>
+                <li>Write an arrow function <code>isPalindrome = (str) => ...</code> that returns <code>true</code> if
+                    the string is a palindrome (reads the same forwards and backwards), <code>false</code> otherwise.
+                    Use <code>reverseString</code> inside it!</li>
+                <li>Enter a word below and click "Check" to test your functions.</li>
+            </ol>
+        </div>
+        <script>
+            // YOUR CODE HERE — Exercise 2
+            function reverseString(str) {
+                // TODO
+            }
+
+            const isPalindrome = (str) => {
+                // TODO
+            };
+        </script>
+        <input type="text" id="palindrome-input" placeholder='Enter a word, e.g. "racecar"' />
+        <button onclick="checkEx2()">Check</button>
+        <div class="output" id="ex2-output">Output will appear here...</div>
+    </div>
+
+    <!-- ============================================================ -->
+    <h2>Exercise 3: Conditionals</h2>
+
+    <p><strong>Your task:</strong></p>
+    <ol>
+        <li>Write a function <code>letterGrade(score)</code> that takes a number (0–100) and returns:
+            <ul>
+                <li><code>"A"</code> for 90 and above</li>
+                <li><code>"B"</code> for 80–89</li>
+                <li><code>"C"</code> for 70–79</li>
+                <li><code>"D"</code> for 60–69</li>
+                <li><code>"F"</code> for below 60</li>
+            </ul>
+        </li>
+        <li>Use <code>if / else if / else</code> statements.</li>
+        <li>Test it: <code>console.log(letterGrade(85))</code> should print <code>"B"</code>.</li>
+    </ol>
+
+    <script>
+        // YOUR CODE HERE — Exercise 3
+        function letterGrade(score) {
+            // TODO
+        }
+    </script>
+    <input type="number" id="score-input" placeholder="Enter a score (0–100)" min="0" max="100" />
+    <button onclick="checkEx3()">Check</button>
+    <div class="output" id="ex3-output">Output will appear here...</div>
+
+    <!-- ============================================================ -->
+    <h2>Exercise 4: Objects</h2>
+
+    <p><strong>Your task:</strong></p>
+    <ol>
+        <li>Create an object called <code>person</code> with three properties: <code>name</code> (string),
+            <code>age</code> (number), and <code>major</code> (string).</li>
+        <li>Access each property using dot notation and <code>console.log</code> them individually.</li>
+        <li>Write a function <code>describe(person)</code> that returns the string:<br>
+            <code>"[name] is [age] years old and studies [major]."</code>
+        </li>
+        <li><em>Bonus:</em> Add a new property <code>gpa</code> to your object after it's created, then log the whole
+            object.</li>
+    </ol>
+    <p>In React, props work just like this — they're objects passed into your component.</p>
+
+    <script>
+        // YOUR CODE HERE — Exercise 4
+        const person = {
+            // TODO: add name, age, major
+        };
+
+        function describe(p) {
+            // TODO: return a string using p.name, p.age, p.major
+        }
+    </script>
+    <button onclick="checkEx4()">Check</button>
+    <div class="output" id="ex4-output">Output will appear here...</div>
+
+    <!-- ============================================================ -->
+    <!-- Check functions — do not modify below this line -->
+    <script>
+        function checkEx1() {
+            const out = document.getElementById("ex1-output");
+            try {
+                if (typeof myName !== "undefined" && typeof myAge !== "undefined") {
+                    out.textContent = `Found myName = "${myName}" (${typeof myName}) and myAge = ${myAge} (${typeof myAge}). Check your console for the log!`;
+                } else {
+                    out.textContent = "Could not find myName or myAge — make sure they're declared outside a block.";
+                }
+            } catch (e) {
+                out.textContent = "Error: " + e.message;
+            }
+        }
+
+        function checkEx2() {
+            const out = document.getElementById("ex2-output");
+            const name = document.getElementById("greet-input").value.trim();
+            if (!name) { out.textContent = "Enter a name first!"; return; }
+            try {
+                const greeting = greet(name);
+                const sum = add(3, 4);
+                out.textContent = `greet("${name}") → "${greeting}" | add(3, 4) → ${sum}`;
+            } catch (e) {
+                out.textContent = "Error: " + e.message + ". Did you complete both functions?";
+            }
+        }
+
+        function checkEx3() {
+            const out = document.getElementById("ex3-output");
+            const score = Number(document.getElementById("score-input").value);
+            if (isNaN(score)) { out.textContent = "Enter a number first!"; return; }
+            try {
+                const grade = letterGrade(score);
+                const expected = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : score >= 60 ? "D" : "F";
+                out.textContent = `letterGrade(${score}) → "${grade}" ${grade === expected ? "(correct!)" : `— expected "${expected}", double-check your conditions.`}`;
+            } catch (e) {
+                out.textContent = "Error: " + e.message + ". Did you write the letterGrade function?";
+            }
+        }
+
+        function checkEx4() {
+            const out = document.getElementById("ex4-output");
+            try {
+                if (typeof person === "undefined") { out.textContent = "Could not find person — make sure it's declared outside a block."; return; }
+                const result = describe(person);
+                const hasAll = person.name && person.age && person.major;
+                if (!hasAll) { out.textContent = "person object is missing name, age, or major."; return; }
+                out.textContent = `person → ${JSON.stringify(person)} | describe(person) → "${result}"`;
+            } catch (e) {
+                out.textContent = "Error: " + e.message;
+            }
+        }
+    </script>
+
+</body>
+
+</html>
